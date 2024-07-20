@@ -27,28 +27,109 @@
             </tr>
         </thead>
         <tbody>
+            {% if dados != None %}
+            {% for row in dados %}
             <tr>
-                <th scope="row">Fulano</th>
-                <td>aksjkasj@mgial.com</td>
-                <td>85 88859922</td>
-                <td>amigo</td>
+                <th scope="row">{{row.nome}}</th>
+                <td>{{row.email}}</td>
+                <td>{{row.numero}}</td>
+                <td>{{row.tag}}</td>
                 <td>
                     <a class="waves-effect waves-light btn red">apagar</a>
                     <a class="waves-effect waves-light btn">editar</a>
                 </td>
             </tr>
+            {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Email</th>
+                <th scope="col">Celular</th>
+                <th scope="col">Tags</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if dados != None %}
+            {% for row in dados %}
+            {% if row.tag >= tag %}
+            <tr>
+                <th scope="row">{{row.nome}}</th>
+                <td>{{row.email}}</td>
+                <td>{{row.numero}}</td>
+                <td>{{row.tag}}</td>
+                <td>
+                    <a class="waves-effect waves-light btn red">apagar</a>
+                    <a class="waves-effect waves-light btn">editar</a>
+                </td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
         </tbody>
     </table>
     <section style="text-align: right; margin:20px 50px">
         <a class="waves-effect waves btn modal-trigger" href="#modal1">Adicionar Ctt</a>
         <div id="modal1" class="modal">
             <div class="modal-content">
-                <h4>Modal Header</h4>
-                <p>A bunch of text</p>
+                <h4>Cadastrar novo contato</h4>
+                <label>Nome:</label>
+                <input type="text" placeholder="Insira o nome do contato">
+                <label>Email:</label>
+                <input type="text" placeholder="Insira o email do contato">
+                <label>Celular:</label>
+                <input type="text" placeholder="Insira o numero do contato">
+                <div>
+                    <label>Tags:  </label>
+                    <label>
+                        <input name="group1" type="radio" value="Familia"/>
+                        <span>Familia</span>
+                    </label>
+                    <label>
+                        <input name="group1" type="radio" value="Empresa"/>
+                        <span>Empresa</span>
+                    </label>
+                    <label>
+                        <input name="group1" type="radio" value="Amigos"/>
+                        <span>Amigos</span>
+                    </label>
+                </div>
+
+                <button class="waves-effect waves-light btn pulse" type="submit">Salvar</button>
             </div>
         </div>
     </section>
 
+    <h2>Lista de carros:</h2>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Modelo</th>
+                <th scope="col">Marca</th>
+                <th scope="col">Cor</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if carros != None %}
+            {% for row in carros %}
+            <tr>
+                <th scope="row">{{row.nome}}</th>
+                <td>{{row.modelo}}</td>
+                <td>{{row.marca}}</td>
+                <td><div style="background-color: {{row.cor}}; width: 20px; height: 20px;"></div></td>
+                <td>
+                    <a class="waves-effect waves-light btn red">apagar</a>
+                    <a class="waves-effect waves-light btn">editar</a>
+                </td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
         var elems = document.querySelectorAll('.modal');
